@@ -1,22 +1,33 @@
 /* eslint-disable prettier/prettier */
 import { model, Schema } from 'mongoose'
 const userSchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true,
     },
-    age: {
+    author: {
+        type: String,
+        required: true,
+    },
+    price: {
         type: Number,
-        required: true,
-    },
-    email: {
-        type: String,
         required: true,
         unique: true,
     },
-
-    userStatus: {
+    category: {
         type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    quantity: {
+        type: Number,
+        required: true,
+    },
+    inStock: {
+        type: Boolean,
         required: true,
     },
 })
