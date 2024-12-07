@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IProduct {
     title: string
     author: string
     price: number

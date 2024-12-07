@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose'
-import { IUser } from './user.interface'
-const userSchema = new Schema<IUser>(
+import { IProduct } from './product.interface'
+const userSchema = new Schema<IProduct>(
     {
         title: {
             type: String,
@@ -42,6 +42,6 @@ const userSchema = new Schema<IUser>(
     { timestamps: true }
 )
 
-const User = model<IUser>('User', userSchema)
+const Product = model<IProduct>('User', userSchema)
 
-export default User
+export default Product

@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
-import { userService } from './user.services'
+import { userService } from './product.services'
 
-const createUser = async (req: Request, res: Response) => {
+const createProduct = async (req: Request, res: Response) => {
     try {
         const jload = req.body
 
-        const result = await userService.createUser(jload)
+        const result = await userService.createProduct(jload)
         res.json({
             success: true,
             message: 'User created successfully',
@@ -20,9 +20,9 @@ const createUser = async (req: Request, res: Response) => {
     }
 }
 
-const getUser = async (req: Request, res: Response) => {
+const getProduct = async (req: Request, res: Response) => {
     try {
-        const result = await userService.getUser()
+        const result = await userService.getProduct()
         res.json({
             success: true,
             message: 'User fetched successfully',
@@ -94,8 +94,8 @@ const deleteBook = async (req: Request, res: Response) => {
 }
 
 export const userController = {
-    createUser,
-    getUser,
+    createProduct,
+    getProduct,
     getSingle,
     UpdateBook,
     deleteBook,

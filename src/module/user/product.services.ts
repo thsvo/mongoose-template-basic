@@ -1,12 +1,12 @@
-import { IUser } from './user.interface'
-import User from './user.model'
+import { IProduct } from './product.interface'
+import User from './product.model'
 
-const createUser = async (jload: IUser): Promise<IUser> => {
+const createProduct = async (jload: IProduct): Promise<IProduct> => {
     const result = await User.create(jload)
     return result
 }
 
-const getUser = async () => {
+const getProduct = async () => {
     const users = await User.find({})
     return users
 }
@@ -16,7 +16,7 @@ const getSingleProduct = async (id: string) => {
     return result
 }
 
-const getUpdateProduct = async (id: string, data: IUser) => {
+const getUpdateProduct = async (id: string, data: IProduct) => {
     const result = await User.findByIdAndUpdate(id, data, {
         new: true,
     })
@@ -29,8 +29,8 @@ const getDeleteProduct = async (id: string) => {
 }
 
 export const userService = {
-    createUser,
-    getUser,
+    createProduct,
+    getProduct,
     getSingleProduct,
     getUpdateProduct,
     getDeleteProduct,

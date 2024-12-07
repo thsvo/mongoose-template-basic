@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { bookService } from './book.service'
-import User from '../user/user.model';
+import User from '../user/product.model';
 
 export const orderBook = async (req: Request, res: Response) => {
     try {
