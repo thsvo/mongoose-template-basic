@@ -1,14 +1,13 @@
-/* eslint-disable prettier/prettier */
 import { Request, Response } from 'express'
-import User from './user.model'
+import { userService } from './user.services'
 
 const createUser = async (req: Request, res: Response) => {
     try {
         const jload = req.body
 
-        const result = await User.create(jload)
+        const result = await userService.createUser(jload)
         res.json({
-            status: 'success',
+            success: true,
             message: 'User created successfully',
             data: result,
         })
@@ -22,15 +21,82 @@ const createUser = async (req: Request, res: Response) => {
 }
 
 const getUser = async (req: Request, res: Response) => {
-    const payload = req.body
-    const result = await User.create(payload)
-    res.json({
-        status: 'success',
-        message: 'User created successfully',
-        data: result,
-    })
+    try {
+        const result = await userService.getUser()
+        res.json({
+            success: true,
+            message: 'User fetched successfully',
+            data: result,
+        })
+    } catch (error) {
+        res.send({
+            success: false,
+            message: 'Error fetching user',
+            error,
+        })
+    }
 }
+
+const getSingle = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id
+        const result = await userService.getSingleProduct(userId)
+
+        res.json({
+            success: true,
+            message: 'Book retrieved successfully',
+            data: result,
+        })
+    } catch (error) {
+        res.send({
+            success: false,
+            message: 'Error fetching user',
+            error,
+        })
+    }
+}
+
+const UpdateBook = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id
+        const body = req.body
+        const result = await userService.getUpdateProduct(userId, body)
+        res.json({
+            success: true,
+            message: 'User updated successfully',
+            data: result,
+        })
+    } catch (error) {
+        res.json({
+            success: false,
+            message: 'Error updating user',
+            error,
+        })
+    }
+}
+
+const deleteBook = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id
+        const result = await userService.getDeleteProduct(userId)
+        res.json({
+            success: true,
+            message: 'User deleted successfully',
+            data: result,
+        })
+    } catch (error) {
+        res.json({
+            success: false,
+            message: 'Error deleting user',
+            error,
+        })
+    }
+}
+
 export const userController = {
     createUser,
     getUser,
+    getSingle,
+    UpdateBook,
+    deleteBook,
 }
